@@ -1,0 +1,295 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: #525758;
+  min-height: 100vh;
+  background-image: linear-gradient(180deg, #ec545c 0%, #ec545c 50%, #eeeeee 50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container {
+  width: 80%;
+  max-width: 1800px;
+  background-color: #525758;
+  box-shadow: 0 1.5rem 5rem rgba(0,0,0,.5);
+  padding: 2rem 4rem;
+  border-radius: .3rem;
+  margin: 8rem auto;
+}
+
+.title,
+.filter,
+ small {
+  color: #eeeeee;
+}
+
+.title {
+  font-size: 4rem;
+  text-align: center;
+  color: #eeeeee;
+  margin-bottom: 1.5rem;
+}
+
+.form,
+.form2 {
+  margin: 0 auto 2.5rem auto;
+  display: flex;
+  justify-content: center ;
+  align-items: center;
+}
+
+.types,
+.btn,
+.name {
+  border: none;
+  border-radius: .3rem;
+  background-color: #eeeeee;
+  padding: .5rem;
+  height: 3rem;
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.types,
+.name {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.name,
+.types {
+  width: 13rem;
+}
+
+small {
+  display: block;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.pokemon-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 420px));
+  grid-gap: 4rem;
+  justify-content: center;
+  align-content: center;
+}
+
+.card,
+.no-result {
+  background-color: #eeeeee;
+  padding: 2rem;
+  border-radius: .7rem;
+  position: relative;
+  cursor: pointer;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  transition: .3s;
+  
+}
+
+.card:hover {
+  transform: translateY(-.3rem);
+  box-shadow: 0 1.5rem 2rem rgba(0,0,0,.5);
+}
+
+.card::after {
+  content: '';
+  display: block;
+  height: 12rem;
+  width: 12rem;
+  background-image: linear-gradient(180deg, #ec545c 0%, #ec545c 50%, #eeeeee 50%);
+  border-radius: 50%;
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: .3s;
+}
+
+.card:hover::after {
+  transform: translate(-50%, -50%) scale(.9);
+}
+
+.card-title {
+  text-transform: uppercase;
+}
+
+.card-img {
+  height: 8rem;
+  margin-top: 3rem;
+  filter: drop-shadow(0 .9rem .9rem rgba(0,0,0,.5));
+  position: relative;
+  z-index: 2;
+  transition: .3s;
+}
+
+.button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  
+  border: none;
+  border-radius: 50%;
+  background-color: #fff;
+  color: #525758;
+  height: 40px;
+  width: 40px;
+  box-shadow: 0 1rem 1rem rgba(0,0,0,.5);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stop {
+  bottom: 70px;
+}
+
+.stop span {
+  display: inline-block;
+  height: .8rem;
+  width: .8rem;
+  background-color: #525758;
+}
+
+.card-type {
+  margin-top: 5rem; 
+}
+
+.card-descrip {
+  margin-top: 2rem;
+}
+
+.card-type,
+.card-descrip {
+  text-transform: uppercase;
+  background-color: #525758;
+  color: #eeeeee;
+  padding: 1.5rem;
+  border-radius: .5rem;
+}
+
+@media only screen and (max-width: 50em) {
+  .card::after {
+    top: 30%;
+  }
+}
+
+@media only screen and (max-width: 31.25em) {
+  .title {
+    font-size: 3rem;
+    text-align: center;
+    color: #eeeeee;
+    margin-bottom: 1.5rem;
+}
+
+  .form,
+  .form2 {
+      flex-direction: column;
+  }
+
+  .form > *:not(:last-child),
+  .form2 > *:not(:last-child) {
+      margin-bottom: 1.5rem;
+  }
+
+  .card::after {
+    top: 28%;
+}
+}
+
+@media only screen and (max-width: 25em) {
+  .card::after {
+    top: 24%;
+  }
+
+  .card-type {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.steel {
+	background-color: #f4f4f4;
+}
+
+.fire {
+	background-color: #FDDFDF;
+}
+
+.grass {
+	background-color: #DEFDE0;
+}
+
+.electric {
+	background-color: #FCF7DE;
+}
+
+.water, .ice {
+	background-color: #DEF3FD;
+}
+
+.ground {
+	background-color: #f4e7da;
+}
+
+.rock {
+	background-color: #d5d5d4;
+}
+
+.fairy {
+	background-color: #fceaff;
+}
+
+.poison {
+	background-color: #98d7a5;
+}
+
+.bug {
+	background-color: #f8d5a3;
+}
+
+.dragon {
+	background-color: #97b3e6;
+}
+
+.psychic {
+	background-color: #eaeda1;
+}
+
+.flying {
+	background-color: #F5F5F5;
+}
+
+.fighting {
+	background-color: #E6E0D4;
+}
+
+.normal {
+	background-color: #F5F5F5;
+}

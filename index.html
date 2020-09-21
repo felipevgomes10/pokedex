@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="./img/pokeball.jpg" type="image/jpg" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <title>Pokedex | Primeira Gen</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="title">Pokedex<br>Gen 1</h1>
+    <form name="form" id="form" class="form">
+      <h3 class="filter">type:</h3>
+      <select name="types" id="types" class="types">
+        <option value="">select a type</option>
+        <option value="steel">steel</option>
+        <option value="fire">fire</option>
+        <option value="grass">grass</option>
+        <option value="electric">electric</option>
+        <option value="water">water</option>
+        <option value="ice">ice</option>
+        <option value="ground">ground</option>
+        <option value="rock">rock</option>
+        <option value="fairy">fairy</option>
+        <option value="poison">poison</option>
+        <option value="bug">bug</option>
+        <option value="dragon">dragon</option>
+        <option value="psychic">psychic</option>
+        <option value="flying">flying</option>
+        <option value="fighting">fighting</option>
+        <option value="normal">normal</option>
+      </select>
+      <button type="button" class="btn">search</button>
+    </form>
+    <form name="form2" id="form2" class="form2">
+      <h3 class="filter">name:</h3>
+      <input type="text" name="name" id="name" class="name" placeholder="Ex: bulbasaur" />
+      <button type="button" class="btn">search</button>
+    </form>
+    <small>*to hear the description of a pokemon click on its card.</small>
+    <ul class="pokemon-list">
+    </ul>
+  </div>
+  <button type="button" class="button">▲</button>
+  <button type="button" class="button stop"><span></span></button>
+  <script type="module" src="./scripts/script.js"></script>
+</body>
+
+</html>
