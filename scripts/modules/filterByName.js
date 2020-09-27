@@ -55,9 +55,10 @@ export default (function filterByName() {
     }
 
     function pressEnter(event) {
-      event.preventDefault();
-      if (event.key === "Enter")
+      if (event.key === "Enter") {
+        event.preventDefault();
         filterFunction();
+      }
     };
 
     form2[1].addEventListener('click', filterFunction);

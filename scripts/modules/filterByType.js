@@ -72,9 +72,10 @@ export default (function filterByType() {
     };
 
     const pressEnter = event => {
-      event.preventDefault();
-      if (event.key === "Enter")
+      if (event.key === "Enter") {
+        event.preventDefault();
         filterFunction();
+      }
     }
 
     form[1].addEventListener('click', filterFunction);
