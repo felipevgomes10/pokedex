@@ -45,4 +45,5 @@ _**O projeto Pokedex Primeira Gen utiliza a pokeAPI (https://pokeapi.co/) para o
 <img src="./img/readme/async.PNG" />
 
 Para mais informações sobre async e await acesse: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Statements/funcoes_assincronas
+
 Link da página do projeto: https://felipevgomes10.github.io/pokedex/
