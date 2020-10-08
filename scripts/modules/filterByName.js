@@ -12,9 +12,12 @@ export default (function filterByName() {
 
   const filter = async () => {
     for (let i = 1; i <= 150; i++) {
-      listOfPokemon.push(await getPokemonUrl(i));
+      listOfPokemon.push(getPokemonUrl(i));
     }
-    const listOfPokemonResolved = await Promise.all(listOfPokemon);
+
+    const listOfPokemonResolvedOrRejected = await Promise.allSettled(listOfPokemon);
+    const listOfPokemonFulfilled = listOfPokemonResolvedOrRejected.filter((pokemon) => pokemon.status === 'fulfilled');
+    const listOfPokemonResolved = listOfPokemonFulfilled.map((pokemon) => pokemon.value);
 
     const filterFunction = async () => {
       if (form2[0].value) {
@@ -35,7 +38,7 @@ export default (function filterByName() {
               <img class="card-img" src="https://pokeres.bastionbot.org/images/pokemon/${foundPokemon.id}.png" alt="${foundPokemon.name}" />
               <p class="card-type"><span>${types.join('</span> | <span>')}</span></p>
               <p class="card-descrip">
-                  ${description.flavor_text_entries[3].flavor_text}
+                  ${description.flavor_text_entries[21].flavor_text}
                 </p>
             </li>
           `
