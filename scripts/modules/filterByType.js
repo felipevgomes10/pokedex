@@ -13,9 +13,11 @@ export default (function filterByType() {
   const filterPokemon = async () => {
 
     for (let i = 1; i <= 150; i++) {
-      listOfPokemon.push(await getPokemonUrl(i));
+      listOfPokemon.push(getPokemonUrl(i));
     }
-    const listOfPokemonResolved = await Promise.all(listOfPokemon);
+    const listOfPokemonResolvedOrRejected = await Promise.allSettled(listOfPokemon);
+    const listOfPokemonFulfilled = listOfPokemonResolvedOrRejected.filter((pokemon) => pokemon.status === 'fulfilled');
+    const listOfPokemonResolved = listOfPokemonFulfilled.map((pokemon) => pokemon.value);
 
     const filterFunction = async () => {
       if (form[0].value) {
@@ -56,7 +58,7 @@ export default (function filterByType() {
         const descriptionsFilter = descriptionsResolved.reduce((accumulator, description) => {
 
           accumulator += `
-            <p class="card-descrip">${description.flavor_text_entries[3].flavor_text}</p>#
+            <p class="card-descrip">${description.flavor_text_entries[21].flavor_text}</p>#
           `
 
           return accumulator;

@@ -11,11 +11,13 @@ export default (function pokemon() {
   const fetchPokemon = async () => {
 
     for (let i = 1; i <= 150; i++) {
-      listOfPokemon.push(await fetchPokemonUrl(i));
-      descriptions.push(await fetchDescriptionUrl(i));
+      listOfPokemon.push(fetchPokemonUrl(i));
     }
 
-    const listOfPokemonResolved = await Promise.all(listOfPokemon);
+    const listOfPokemonResolvedOrRejected = await Promise.allSettled(listOfPokemon);
+    const listOfPokemonFulfilled = listOfPokemonResolvedOrRejected.filter((pokemon) => pokemon.status === 'fulfilled');
+    const listOfPokemonResolved = listOfPokemonFulfilled.map((pokemon) => pokemon.value);
+
 
     const listTemplate = listOfPokemonResolved.reduce((accumulator, pokemon) => {
       const types = pokemon.types.map(typeInfo => typeInfo.type.name);
@@ -31,12 +33,13 @@ export default (function pokemon() {
     }, '');
     list.innerHTML = listTemplate;
 
+    listOfPokemonResolved.forEach((pokemon) => descriptions.push(fetchDescriptionUrl(pokemon.id)));
     const listOfDescriptionsResolved = await Promise.all(descriptions);
 
     const descripTemplate = listOfDescriptionsResolved.reduce((accumulator, description) => {
 
       accumulator += `
-        <p class="card-descrip">${description.flavor_text_entries[3].flavor_text}</p>#
+        <p class="card-descrip">${description.flavor_text_entries[21].flavor_text}</p>#
       `
       return accumulator;
     }, '');
